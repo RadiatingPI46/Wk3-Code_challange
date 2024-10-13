@@ -6,7 +6,7 @@ fetch('http://localhost:3000/films')
     for(movies of data){
        movie_titles.innerHTML+=`
        <div>
-       <li onclick="fetch_data(${movies.id})">${movies.title}</li>
+       <li class="film item" onclick="fetch_data(${movies.id})">${movies.title}</li>
        <button onclick ="delete_movie(${movies.id})" class="rmv_btn">X</button>
        <hr>
        </div>
@@ -67,29 +67,26 @@ function fetch_data(id){
   });
 }
 
-const buy_button=document.getElementById("buy-ticket")
-buy_button.addEventListener("click", (ticket)=>{
-    console.log("button");
-    if(document.getElementById("ticket-num")===0){
-        alert()
-
-    }
-    else if(document.getElementById("ticket-num")>0){
-        fetch(`http://localhost:3000/films/1`, {
-            method: 'PATCH',
-            body: JSON.stringify({
-                tickets_sold:1
-            }),
-            headers: {
-              'Content-type': 'application/json',
-            },
-          })
-            .then((response) => response.json())
-            .then((info) => {
-                const movie_tickets_remainig=document.getElementById("ticket-num")
-                movie_tickets_remainig.innerHTML=`[${capacity-tickets_sold}]`
-            });
-        alert("Ticket purchased")
-    }
-    
-})
+// const buy_button=document.getElementById("buy-ticket")
+// buy_button.addEventListener("click", (ticket)=>{
+//     console.log("button")
+//     fetch(`http://localhost:3000/films/1`, {
+//         method: 'PATCH',
+//         body: JSON.stringify({
+//             tickets_sold:28
+//         }),
+//         headers: {
+//           'Content-type': 'application/json',
+//         },
+//       })
+//         .then((response) => response.json())
+//         .then((info) => {
+            // const movie_tickets_remainig=document.getElementById("ticket-num")
+            // movie_tickets_remainig.innerHTML=`[${info.capacity-info.tickets_sold}]`
+        // })
+    // alert("Ticket_Purchased")
+    // if (movie_tickets_remainig===0){
+    //     document.getElementById("buy-ticket").innerText="sold out"
+    //     alert("sold_out")
+    // }
+// })
